@@ -1,0 +1,20 @@
+# build definition
+parameters:
+  appName: ''
+  pool: ''
+  npmFeed: 'FZI-IOTA-NPM'
+  test: ''
+
+jobs:
+- job: Build 
+  pool: ${{ parameters.pool }}
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
+  - template: ../steps/npm.yml
+    parameters:
+      test:  ${{ parameters.test }} 
+  #- template: ../steps/sonarqube.yml
+  - template: ../steps/docker.yml

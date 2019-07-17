@@ -1,0 +1,38 @@
+ steps:
+ 
+  - task: Docker@1
+    displayName: Container registry login
+    inputs:
+      command: login
+      azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+      azureContainerRegistry: $(azureContainerRegistry)  
+  - task: npmAuthenticate@0
+    displayName: Provide NPM Authentication
+    inputs:
+      workingFile: $(app_path)/.npmrc
+  - task: Docker@1
+    displayName: Build Docker image
+    inputs:
+      command: build
+      azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+      azureContainerRegistry: $(azureContainerRegistry)  
+      dockerFile: $(app_path)/Dockerfile
+      imageName: $(app_path):build
+      qualifyImageName: true
+
+  - task: Docker@1
+    displayName: Push Docker image
+    inputs:
+      command: push
+      azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+      azureContainerRegistry: $(azureContainerRegistry)  
+      imageName: $(app_path)
+      qualifyImageName: true
+
+  - task: Docker@1
+    displayName: Docker logout
+    condition: always()
+    inputs:
+      command: logout
+      azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+      azureContainerRegistry: $(azureContainerRegistry)  

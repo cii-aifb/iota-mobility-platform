@@ -1,0 +1,10 @@
+title: FZI IOTA - Open mobility marketplace
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - showcase.md
+
+theme: jekyll-theme-cayman

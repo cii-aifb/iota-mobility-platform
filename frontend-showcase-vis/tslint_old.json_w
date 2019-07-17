@@ -1,0 +1,19 @@
+{
+  "defaultSeverity": "warning",
+  "extends": ["prettier", "plugin:vue/recommended"],
+  "linterOptions": {
+    "exclude": ["node_modules/**"]
+  },
+  "plugins": ["vue", "prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+
+    /*     "quotemark": [true, "single"],
+    "indent": [true, "spaces", 2],
+    "interface-name": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-consecutive-blank-lines": false
+ */
+  }
+}

@@ -1,0 +1,29 @@
+#
+#
+#
+
+variables:
+- group: dockerRegistry
+- name: app_path
+  value: frontend-showcase-vis
+- name: app_name
+  value: Frontend showcase visulization
+
+
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - 'frontend-showcase-vis/*'
+    - 'azure-pipelines/frontend-showcase-vis-build.yml'
+
+
+jobs:
+- template: jobs/build-vue.yml  # Template reference
+  parameters:
+    app_name: $(app_name)
+    pool:
+      vmImage: 'ubuntu-16.04'
+ 

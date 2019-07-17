@@ -1,0 +1,81 @@
+{
+  "name": "fzi-iota-showcase-tram-mock",
+  "version": "0.0.1",
+  "main": "out/index.js",
+  "types": "out/index.d.ts",
+  "files": [
+    "out",
+    "src"
+  ],
+  "description": "",
+  "keywords": [
+    "iota",
+    "dlt",
+    "tangle",
+    "crypto",
+    "javascript",
+    "nodejs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RaphaelManke/fzi-iota-showcase"
+  },
+  "contributors": [
+    "Robin Lamberti <lamberti.robin@gmail.com> (https://github.com/cr0ssing/)",
+    "Raphael Manke <> (https://github.com/RaphaelManke/)"
+  ],
+  "license": "ISC",
+  "scripts": {
+    "build": "tsc",
+    "test": "mocha",
+    "localTest": "mocha --reporter spec --inspect",
+    "coverage": "nyc mocha && node process-coverage-report.js "
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx"
+    ],
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "reporter": [
+      "html",
+      "cobertura"
+    ],
+    "all": false
+  },
+  "dependencies": {
+    "@types/node-schedule": "^1.2.3",
+    "@types/promise-queue": "^2.2.0",
+    "bluebird-retry": "^0.11.0",
+    "fzi-iota-showcase-client": "alpha",
+    "fzi-iota-showcase-vehicle-client": "alpha",
+    "fzi-iota-showcase-vehicle-mock": "alpha",
+    "node-schedule": "^1.3.2",
+    "promise-queue": "^2.2.5"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.26",
+    "@types/bluebird-retry": "^0.11.3",
+    "@types/chai": "^4.1.7",
+    "@types/chai-things": "0.0.33",
+    "@types/extend": "^3.0.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "7.0.22",
+    "chai": "^4.2.0",
+    "chai-things": "^0.2.0",
+    "mocha": "^5.2.0",
+    "mocha-junit-reporter": "^1.18.0",
+    "nyc": "^13.3.0",
+    "source-map-support": "^0.5.11",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.13.0",
+    "typescript": "^3.3.3333",
+    "vsts-coverage-styles": "^1.0.7"
+  }
+}
